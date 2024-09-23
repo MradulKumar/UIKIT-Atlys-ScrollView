@@ -23,9 +23,9 @@ class CustomCarouselView: UIView {
         super.init(frame: frame)
         
         //setup
-        setupPageControl()
+        setupPageControlView()
         setupContainerScrollView()
-        setupContent()
+        setupScrollViewContents()
     }
     
     required init?(coder: NSCoder) {
@@ -61,7 +61,7 @@ private extension CustomCarouselView {
         ])
     }
     
-    func setupPageControl() {
+    func setupPageControlView() {
         pageControlView.numberOfPages = viewModel.images.count
         pageControlView.currentPage = 0
         pageControlView.pageIndicatorTintColor = .lightGray.withAlphaComponent(0.8)
@@ -96,7 +96,7 @@ private extension CustomCarouselView {
         return imageView
     }
     
-    func setupContent() {
+    func setupScrollViewContents() {
         var lastView: UIImageView?
         
         viewModel.images.forEach { imageName in
@@ -140,16 +140,23 @@ extension CustomCarouselView: UIScrollViewDelegate {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let targetX = targetContentOffset.pointee.x
-        
         if velocity.x > 0 {
             viewModel.currentlyVisiblePageIndex = min(viewModel.currentlyVisiblePageIndex + 1, viewModel.images.count - 1)
         } else if velocity.x < 0 {
             viewModel.currentlyVisiblePageIndex = max(viewModel.currentlyVisiblePageIndex - 1, 0)
-        } else {
-            viewModel.currentlyVisiblePageIndex = Int(round(targetX / viewItemSize))
         }
-        
+        else {
+            let centerX = scrollView.center.x + scrollView.contentOffset.x
+            scrollView.subviews.forEach { cardView in
+                let distanceFromCenter = centerX - cardView.center.x
+                let thresholdDistance = viewItemSize / 2
+                
+                if abs(distanceFromCenter) <= thresholdDistance {
+                    viewModel.currentlyVisiblePageIndex = Int(floor(centerX / viewItemSize))
+                }
+            }
+        }
+
         let newOffsetX = CGFloat(viewModel.currentlyVisiblePageIndex) * viewItemSize - (frame.width - viewItemSize) / 2
         targetContentOffset.pointee = CGPoint(x: newOffsetX, y: targetContentOffset.pointee.y)
         pageControlView.currentPage = viewModel.currentlyVisiblePageIndex
