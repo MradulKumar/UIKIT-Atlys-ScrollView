@@ -8,12 +8,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setupCarouselView()
     }
-
-
 }
 
+// MARK: - Private Methods
+private extension ViewController {
+    
+    func setupCarouselView() {
+        let frame = CGRectMake(0, 200, view.bounds.width, 250)
+        let carouselView = CustomCarouselView(frame: frame, viewModel: CustomCarouselViewModel())
+        view.addSubview(carouselView)
+    }
+}

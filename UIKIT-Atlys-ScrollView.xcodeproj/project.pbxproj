@@ -13,6 +13,8 @@
 		F879D39F2CA15E9F002EB0D2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F879D39E2CA15E9F002EB0D2 /* Base */; };
 		F879D3A12CA15EA0002EB0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F879D3A02CA15EA0002EB0D2 /* Assets.xcassets */; };
 		F879D3A42CA15EA0002EB0D2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F879D3A32CA15EA0002EB0D2 /* Base */; };
+		F879D3AC2CA15EE0002EB0D2 /* CustomCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F879D3AB2CA15EE0002EB0D2 /* CustomCarouselView.swift */; };
+		F879D3AF2CA1657F002EB0D2 /* CustomCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F879D3AE2CA1657F002EB0D2 /* CustomCarouselViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F879D3A02CA15EA0002EB0D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F879D3A32CA15EA0002EB0D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F879D3A52CA15EA0002EB0D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F879D3AB2CA15EE0002EB0D2 /* CustomCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarouselView.swift; sourceTree = "<group>"; };
+		F879D3AE2CA1657F002EB0D2 /* CustomCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarouselViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		F879D3962CA15E9F002EB0D2 /* UIKIT-Atlys-ScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				F879D3AD2CA15EEB002EB0D2 /* CarouselView */,
 				F879D3972CA15E9F002EB0D2 /* AppDelegate.swift */,
 				F879D3992CA15E9F002EB0D2 /* SceneDelegate.swift */,
 				F879D39B2CA15E9F002EB0D2 /* ViewController.swift */,
@@ -65,6 +70,15 @@
 				F879D3A52CA15EA0002EB0D2 /* Info.plist */,
 			);
 			path = "UIKIT-Atlys-ScrollView";
+			sourceTree = "<group>";
+		};
+		F879D3AD2CA15EEB002EB0D2 /* CarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				F879D3AB2CA15EE0002EB0D2 /* CustomCarouselView.swift */,
+				F879D3AE2CA1657F002EB0D2 /* CustomCarouselViewModel.swift */,
+			);
+			path = CarouselView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F879D3AF2CA1657F002EB0D2 /* CustomCarouselViewModel.swift in Sources */,
 				F879D39C2CA15E9F002EB0D2 /* ViewController.swift in Sources */,
 				F879D3982CA15E9F002EB0D2 /* AppDelegate.swift in Sources */,
+				F879D3AC2CA15EE0002EB0D2 /* CustomCarouselView.swift in Sources */,
 				F879D39A2CA15E9F002EB0D2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
